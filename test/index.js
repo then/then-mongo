@@ -28,7 +28,7 @@ describe('read only operation', function () {
       .nodeify(done)
   })
   it('db.collection("name").find().count()', function (done) {
-    db.collection('headers').count()
+    db.collection('headers').find().count()
       .then(function (count) {
         assert(typeof count === 'number');
         assert(count > 0);
