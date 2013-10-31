@@ -27,4 +27,12 @@ describe('read only operation', function () {
       })
       .nodeify(done)
   })
+  it('db.collection("name").find().count()', function (done) {
+    db.collection('headers').count()
+      .then(function (count) {
+        assert(typeof count === 'number');
+        assert(count > 0);
+      })
+      .nodeify(done)
+  })
 })
