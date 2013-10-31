@@ -34,6 +34,14 @@ var Cursor = mongojs.Cursor
 mixinPromise(Cursor.prototype, function (self, cb) {
   return self.toArray(cb)
 })
+var cursorTerminators = [
+  'count',
+  'explain',
+  'close'
+];
+cursorTerminators.forEach(function (key) {
+  denodeify(Cursor.prototype, key)
+})
 
 /* Fix Collection */
 
