@@ -4,8 +4,8 @@
   "description": "Promise based mongo driver built on mongojs",
   "keywords": [],
   "dependencies": {
-    "promise": "~4.0.0",
-    "mongojs": "~0.10.1"
+    "promise": "~5.0.0",
+    "mongojs": "~0.12.1"
   },
   "devDependencies": {
     "mocha": "*"
