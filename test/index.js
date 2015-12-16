@@ -1,10 +1,10 @@
 var assert = require('assert')
 var mongo = require('../')
-var db = mongo('mongodb://read:read@ds031617.mongolab.com:31617/esdiscuss')
+var db = mongo('mongodb://read:read@ds063869.mongolab.com:63869/esdiscuss-clone')
 
 before(function (done) {
   this.timeout(10000)
-  db._get(done)
+  db.getConnection().nodeify(done)
 })
 
 describe('read only operation', function () {

@@ -1,68 +1,28 @@
 'use strict'
 
-var mongojs = require('mongojs')
-var Promise = require('promise')
+var mongojs = require('mongojs');
+var Promise = require('promise');
+var Database = require('./lib/database');
 
-function denodeify(proto, method) {
-  proto[method] = Promise.denodeify(proto[method])
-}
+// ObjectId
+module.exports = function (connString, cols, options) {
+  var connection = mongojs.apply(null, arguments);
+  var db = new Database(connection);
+  db.getConnection = Promise.denodeify(connection._getConnection.bind(connection));
+  
+  cols = cols || [];
+  cols.forEach(function (colName) {
+    db[colName] = db.collection(colName);
 
-function mixinPromise(proto, fn) {
-  proto.then = function (onFulfilled, onRejected) {
-    var self = this
-    var res = new Promise(function (resolve, reject) {
-      fn(self, function (err, res) {
-        if (err) reject(err)
-        else resolve(res)
-      })
-    })
-    return res.then.apply(res, arguments)
-  }
-  Object.keys(Promise.prototype)
-    .forEach(function (key) {
-      if (!(key in proto)) {
-        proto[key] = Promise.prototype[key]
-      }
-    })
-}
+    var parts = colName.split('.');
 
+    var last = parts.pop();
+    var parent = parts.reduce(function (parent, prefix) {
+      parent[prefix] = parent[prefix] || {};
+      return parent[prefix];
+    }, db);
 
-/* Fix Cursor */
-
-var Cursor = mongojs.Cursor
-
-mixinPromise(Cursor.prototype, function (self, cb) {
-  return self.toArray(cb)
-})
-var cursorTerminators = [
-  'count',
-  'explain',
-  'close'
-];
-cursorTerminators.forEach(function (key) {
-  denodeify(Cursor.prototype, key)
-})
-
-/* Fix Collection */
-
-var Collection = mongojs.Collection
-
-Object.keys(Collection.prototype)
-  .forEach(function (key) {
-    if (key !== 'find' && key[0] != '_' && typeof Collection.prototype[key] === 'function') {
-      denodeify(Collection.prototype, key)
-    }
+    parent[last] = db.collection(colName);
   })
-
-/* Fix Database */
-
-var Database = mongojs.Database
-
-Object.keys(Database.prototype)
-  .forEach(function (key) {
-    if (key !== 'removeAllEventListeners' && key !== 'collection' && key[0] != '_' && typeof Database.prototype[key] === 'function') {
-      denodeify(Database.prototype, key)
-    }
-  })
-
-module.exports = mongojs
+  return db;
+};

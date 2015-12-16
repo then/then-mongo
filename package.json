@@ -4,11 +4,13 @@
   "description": "Promise based mongo driver built on mongojs",
   "keywords": [],
   "dependencies": {
-    "promise": "~5.0.0",
-    "mongojs": "~0.12.1"
+    "promise": "^7.0.4",
+    "mongojs": "2.2.1"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mkdirp": "^0.5.1",
+    "mocha": "*",
+    "rimraf": "^2.4.4"
   },
   "scripts": {
     "test": "mocha -R spec"
