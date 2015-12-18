@@ -1,23 +1,35 @@
 {
-  "name": "mongod",
+  "name": "then-mongo",
   "version": "1.3.0",
   "description": "Promise based mongo driver built on mongojs",
-  "keywords": [],
+  "keywords": [
+    "mongo",
+    "mongodb",
+    "promise"
+  ],
   "dependencies": {
-    "promise": "^7.0.4",
-    "mongojs": "2.2.1"
+    "babel-types": "^6.3.20",
+    "mongojs": "2.2.1",
+    "promise": "^7.0.4"
   },
   "devDependencies": {
+    "babylon": "^6.3.18",
+    "chalk": "^1.1.1",
+    "istanbul": "^0.4.1",
     "mkdirp": "^0.5.1",
-    "mocha": "*",
-    "rimraf": "^2.4.4"
+    "rimraf": "^2.4.4",
+    "testit": "^2.0.2"
   },
   "scripts": {
-    "test": "mocha -R spec"
+    "prepublish": "node build && node docs",
+    "pretest": "node build dev",
+    "test": "node check-schema && node test",
+    "precoverage": "node build",
+    "coverage": "istanbul cover test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/then/mongod.git"
+    "url": "https://github.com/then/then-mongo.git"
   },
   "author": "ForbesLindesay",
   "license": "MIT"

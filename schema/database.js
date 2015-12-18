@@ -1,6 +1,13 @@
 module.exports = {
-  events: [],
-  properties: ['ObjectId'],
+  eventEmitter: true,
+  events: [
+    {name: 'error', desc: 'Emitted if there is an error during connection with the error as its argument'},
+    {name: 'connect', desc: 'Emitted once the connection has been established'},
+    {name: 'close', desc: 'Emitted when the connection is forcibly closed'}
+  ],
+  properties: [
+    {name: 'ObjectId', desc: 'Constructor for making ObjectIds from strings'}
+  ],
   methods: {
     collection: {
       args: [{name: 'colName'}],
@@ -60,6 +67,11 @@ module.exports = {
     toString: {
       args: [],
       returns: 'string'
+    },
+    _getConnection: {
+      args: [],
+      returns: 'Promise',
+      aliases: ['getConnection']
     }
   }
 };

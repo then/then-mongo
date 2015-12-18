@@ -8,8 +8,6 @@ var Database = require('./lib/database');
 module.exports = function (connString, cols, options) {
   var connection = mongojs.apply(null, arguments);
   var db = new Database(connection);
-  db.getConnection = Promise.denodeify(connection._getConnection.bind(connection));
-  
   cols = cols || [];
   cols.forEach(function (colName) {
     db[colName] = db.collection(colName);

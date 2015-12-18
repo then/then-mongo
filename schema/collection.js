@@ -18,7 +18,7 @@ module.exports = {
       returns: 'Promise<number>'
     },
     distinct: {
-      args: [{name: 'query', default: {}}],
+      args: [{name: 'field'}, {name: 'query'}],
       returns: 'Promise<Array<Object>>'
     },
     insert: {

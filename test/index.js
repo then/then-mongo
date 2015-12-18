@@ -1,38 +1,38 @@
-var assert = require('assert')
+'use strict';
+
+var assert = require('assert');
+var test = require('testit');
 var mongo = require('../')
-var db = mongo('mongodb://read:read@ds063869.mongolab.com:63869/esdiscuss-clone')
+var db = mongo('mongodb://read:read@ds063869.mongolab.com:63869/esdiscuss-clone', ['headers'])
 
-before(function (done) {
-  this.timeout(10000)
-  db.getConnection().nodeify(done)
-})
+test('connect', function () {
+  return db.getConnection();
+}, {timeout: '10 seconds'});
 
-describe('read only operation', function () {
-  it('db.getCollectionNames', function (done) {
-    db.getCollectionNames()
-      .then(function (names) {
-        assert(names.indexOf('contents') != -1)
-        assert(names.indexOf('headers') != -1)
-        assert(names.indexOf('history') != -1)
-        assert(names.indexOf('messages') != -1)
-        assert(names.indexOf('topics') != -1)
-      })
-      .nodeify(done)
+test('read only operation', function () {
+  test('db.getCollectionNames', function () {
+    return db.getCollectionNames().then(function (names) {
+      assert(names.indexOf('contents') != -1);
+      assert(names.indexOf('headers') != -1);
+      assert(names.indexOf('history') != -1);
+      assert(names.indexOf('messages') != -1);
+      assert(names.indexOf('topics') != -1);
+    });
   })
-  it('db.collection("name").find().limit(10)', function (done) {
-    db.collection('headers').find().limit(10)
-      .then(function (headers) {
-        assert(Array.isArray(headers))
-        assert(headers.length === 10)
-      })
-      .nodeify(done)
+  test('db.collection("name").find().limit(10)', function () {
+    return db.collection('headers').find().limit(10).then(function (headers) {
+      assert(Array.isArray(headers));
+      assert(headers.length === 10);
+    });
   })
-  it('db.collection("name").find().count()', function (done) {
-    db.collection('headers').find().count()
-      .then(function (count) {
-        assert(typeof count === 'number');
-        assert(count > 0);
-      })
-      .nodeify(done)
-  })
-})
+  test('db.collection("name").find().count()', function () {
+    return db.headers.find().count().then(function (count) {
+      assert(typeof count === 'number');
+      assert(count > 0);
+    });
+  });
+});
+
+test('db.close()', function () {
+  return db.close();
+});

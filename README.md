@@ -1,27 +1,32 @@
-# mongod
+# then-mongo
 
 Promise based mongo driver built on mongojs
 
-[![Build Status](https://travis-ci.org/then/mongod.png?branch=master)](https://travis-ci.org/then/mongod)
-[![Dependency Status](https://gemnasium.com/then/mongod.png)](https://gemnasium.com/then/mongod)
-[![NPM version](https://badge.fury.io/js/mongod.png)](http://badge.fury.io/js/mongod)
+[![Build Status](https://travis-ci.org/then/then-mongo.png?branch=master)](https://travis-ci.org/then/then-mongo)
+[![Dependency Status](https://gemnasium.com/then/then-mongo.png)](https://gemnasium.com/then/then-mongo)
+[![NPM version](https://badge.fury.io/js/then-mongo.png)](http://badge.fury.io/js/then-mongo)
 
 ## Installation
 
-    npm install mongod
+    npm install then-mongo
+
+## Usage
+
+Emulates the [offical mongo api](https://docs.mongodb.org/manual/reference/method/) as far as is possible, except that the result of every operation is a promise, rather than being synchronous.
+
+```js
+var mongo = require('then-mongo');
+var db = mongo('connection-string', ['collectionA', 'collectionB']);
+
+db.collectionA.find().skip(5).limit(10)
+  .done(function (results) {
+    console.dir(results);
+  });
+```
 
 ## API
 
-Emulates the [offical mongo api](http://docs.mongodb.org/manual/) as far as is possible, except that the result of every operation is a promise, rather than being synchronous.
-
-```js
-var mongo = require('mongod')
-var db = mongo('connection-string', ['collectionA', 'collectionB'])
-db.collectionA.find().skip(5).limit(10)
-  .then(function (results) {
-    console.dir(results)
-  }).done()
-```
+Exports a function `connect(connectionString, collections?, options?)` and returns an instance of [Database](docs/database.md).  If you pass in a list of collection names, then you can access each [Collection](docs/collection.md) as a proeprty of the [Database](docs/database.md) instance.
 
 ## License
 
