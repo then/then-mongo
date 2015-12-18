@@ -9,7 +9,7 @@
   ],
   "dependencies": {
     "babel-types": "^6.3.20",
-    "mongojs": "2.2.1",
+    "mongojs": "2.2.2",
     "promise": "^7.0.4"
   },
   "devDependencies": {
