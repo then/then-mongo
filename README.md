@@ -3,8 +3,8 @@
 Promise based mongo driver built on mongojs
 
 [![Build Status](https://img.shields.io/travis/then/then-mongo/master.svg)](https://travis-ci.org/then/then-mongo)
-[![Dependency Status](https://img.shields.io/david/then/then-mongo.png)](https://david-dm.org/then/then-mongo)
-[![NPM version](https://img.shields.io/npm/v/then-mongo.png)](https://www.npmjs.com/package/then-mongo)
+[![Dependency Status](https://img.shields.io/david/then/then-mongo.svg)](https://david-dm.org/then/then-mongo)
+[![NPM version](https://img.shields.io/npm/v/then-mongo.svg)](https://www.npmjs.com/package/then-mongo)
 
 ## Installation
 
