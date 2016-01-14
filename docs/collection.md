@@ -38,6 +38,10 @@ Returns [`Promise<Object>`](https://www.promisejs.org/api/)
 
 Returns [`Promise<Object>`](https://www.promisejs.org/api/)
 
+### collection.rename(name, opts = {})
+
+Returns [`Promise`](https://www.promisejs.org/api/)
+
 ### collection.drop()
 
 Returns [`Promise`](https://www.promisejs.org/api/)
