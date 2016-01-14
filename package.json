@@ -8,7 +8,7 @@
     "promise"
   ],
   "dependencies": {
-    "mongojs": "2.2.2",
+    "mongojs": "2.3.0",
     "promise": "^7.0.4"
   },
   "devDependencies": {
