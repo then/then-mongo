@@ -37,6 +37,10 @@ module.exports = {
       args: [{name: 'query', default: {}}, {name: 'opts', default: {justOne: false}}],
       returns: 'Promise<Object>'
     },
+    rename: {
+      args: [{name: 'name'}, {name: 'opts', default: {}}],
+      returns: 'Promise'
+    },
     drop: {
       args: [],
       returns: 'Promise'
