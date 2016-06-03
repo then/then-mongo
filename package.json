@@ -21,8 +21,9 @@
   },
   "scripts": {
     "prepublish": "node build && node docs",
-    "pretest": "node build dev",
+    "pretest": "node build --test",
     "test": "node check-schema && node test",
+    "posttest": "node build",
     "precoverage": "node build",
     "coverage": "istanbul cover test"
   },

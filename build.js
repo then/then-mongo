@@ -85,8 +85,15 @@ fs.readdirSync(__dirname + '/schema').forEach(function (type) {
   }
   if (schema.properties) {
     schema.properties.forEach(function (property) {
-      proxy.push('  if (!("' + property.name + '" in _parent)) throw new Error("Missing required property ' + property.name + '");');
+      if (process.argv.indexOf('--test') !== -1) {
+        proxy.push('  if (typeof _parent.' + property.name + ' === "undefined") throw new Error("Missing required property ' + property.name + '");');
+      }
       proxy.push('  this.' + property.name + ' = _parent.' + property.name + ';');
+    });
+  }
+  if (schema.methods && process.argv.indexOf('--test') !== -1) {
+    Object.keys(schema.methods).forEach(function (method) {
+      proxy.push('  if (typeof _parent.' + method + ' !== "function") throw new Error("Missing required method ' + method + '");')
     });
   }
   proxy.push('}');
