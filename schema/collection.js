@@ -11,7 +11,7 @@ module.exports = {
     },
     findAndModify: {
       args: [{name: 'opts'}],
-      returns: 'Promise'
+      returns: 'Promise<any>'
     },
     count: {
       args: [{name: 'query', default: {}}],
@@ -39,15 +39,15 @@ module.exports = {
     },
     rename: {
       args: [{name: 'name'}, {name: 'opts', default: {}}],
-      returns: 'Promise'
+      returns: 'Promise<void>'
     },
     drop: {
       args: [],
-      returns: 'Promise'
+      returns: 'Promise<void>'
     },
     stats: {
       args: [],
-      returns: 'Promise'
+      returns: 'Promise<any>'
     },
     mapReduce: {
       args: [{name: 'map'}, {name: 'reduce'}, {name: 'opts', default: {}}],
@@ -63,19 +63,19 @@ module.exports = {
     },
     dropIndexes: {
       args: [],
-      returns: 'Promise'
+      returns: 'Promise<void>'
     },
     dropIndex: {
       args: [{name: 'index'}],
-      returns: 'Promise'
+      returns: 'Promise<void>'
     },
     createIndex: {
       args: [{name: 'index'}, {name: 'opts', default: {}}],
-      returns: 'Promise'
+      returns: 'Promise<void>'
     },
     ensureIndex: {
       args: [{name: 'index'}, {name: 'opts', default: {}}],
-      returns: 'Promise'
+      returns: 'Promise<void>'
     },
     getIndexes: {
       args: [],
@@ -83,7 +83,7 @@ module.exports = {
     },
     reIndex: {
       args: [],
-      returns: 'Promise'
+      returns: 'Promise<void>'
     },
     isCapped: {
       args: [],

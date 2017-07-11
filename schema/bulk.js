@@ -2,7 +2,7 @@ module.exports = {
   methods: {
     find: {
       args: [{name: 'query'}],
-      returns: '{upsert(), remove(), removeOne(), update(updateObj), updateOne(updateObj), replaceOne(updObj)}'
+      returns: '{upsert(): any, remove(): any, removeOne(): any, update(updateObj: any): any, updateOne(updateObj: any): any, replaceOne(updObj: any): any}'
     },
     insert: {
       args: [{name: 'doc'}],
@@ -18,7 +18,7 @@ module.exports = {
     },
     execute: {
       args: [],
-      returns: 'Promise'
+      returns: 'Promise<any>'
     }
   }
 };

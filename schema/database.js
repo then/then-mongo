@@ -10,51 +10,57 @@ module.exports = {
   ],
   methods: {
     collection: {
-      args: [{name: 'colName'}],
+      desc: 'Get a collection by name',
+      args: [{name: 'colName', type: 'string'}],
       returns: 'Collection',
       proxy: true
     },
     close: {
-      args: [{name: 'force', default: false}],
-      returns: 'Promise'
+      desc: 'Close the database connection',
+      args: [{name: 'force', type: 'boolean', default: false}],
+      returns: 'Promise<void>'
     },
     runCommand: {
-      args: [{name: 'opts'}],
+      desc: 'Execute a command',
+      args: [{name: 'command', type: 'string | Object'}],
       returns: 'Promise<any>'
     },
     listCollections: {
+      desc: 'Get a list of collections with info about each one',
       args: [],
       returns: 'Promise<Array<Object>>'
     },
     getCollectionNames: {
+      desc: 'Get a list of all the collections',
       args: [],
       returns: 'Promise<Array<string>>'
     },
     createCollection: {
-      args: [{name: 'name'}, {name: 'opts', default: {}}],
-      returns: 'Promise'
+      desc: 'Create a collection by name',
+      args: [{name: 'name', type: 'string'}, {name: 'opts', default: {}, type: 'Object'}],
+      returns: 'Promise<void>'
     },
     stats: {
-      args: [{name: 'scale', default: 1}],
+      args: [{name: 'scale', default: 1, type: 'number'}],
       returns: 'Promise<Object>'
     },
     dropDatabase: {
       args: [],
-      returns: 'Promise'
+      returns: 'Promise<void>'
     },
     createUser: {
-      args: [{name: 'usr'}],
-      returns: 'Promise',
+      args: [{name: 'usr', type: 'Object'}],
+      returns: 'Promise<void>',
       aliases: ['addUser']
     },
     dropUser: {
-      args: [{name: 'username'}],
-      returns: 'Promise',
+      args: [{name: 'username', type: 'string'}],
+      returns: 'Promise<void>',
       aliases: ['removeUser']
     },
     eval: {
-      args: [{name: 'fn'}, {name: 'args', rest: true}],
-      returns: 'Promise'
+      args: [{name: 'fn', type: 'Function | string'}, {name: 'args', rest: true, type: 'Array<any>'}],
+      returns: 'Promise<any>'
     },
     getLastErrorObj: {
       args: [],

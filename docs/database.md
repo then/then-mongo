@@ -18,25 +18,37 @@ Each instance of Database has the following properties:
 
 Returns [`Collection`](collection.md)
 
+Get a collection by name
+
 ### database.close(force = false)
 
-Returns [`Promise`](https://www.promisejs.org/api/)
+Returns [`Promise<void>`](https://www.promisejs.org/api/)
 
-### database.runCommand(opts)
+Close the database connection
+
+### database.runCommand(command)
 
 Returns [`Promise<any>`](https://www.promisejs.org/api/)
+
+Execute a command
 
 ### database.listCollections()
 
 Returns [`Promise<Array<Object>>`](https://www.promisejs.org/api/)
 
+Get a list of collections with info about each one
+
 ### database.getCollectionNames()
 
 Returns [`Promise<Array<string>>`](https://www.promisejs.org/api/)
 
+Get a list of all the collections
+
 ### database.createCollection(name, opts = {})
 
-Returns [`Promise`](https://www.promisejs.org/api/)
+Returns [`Promise<void>`](https://www.promisejs.org/api/)
+
+Create a collection by name
 
 ### database.stats(scale = 1)
 
@@ -44,19 +56,19 @@ Returns [`Promise<Object>`](https://www.promisejs.org/api/)
 
 ### database.dropDatabase()
 
-Returns [`Promise`](https://www.promisejs.org/api/)
+Returns [`Promise<void>`](https://www.promisejs.org/api/)
 
 ### database.createUser(usr)
 
-Returns [`Promise`](https://www.promisejs.org/api/)
+Returns [`Promise<void>`](https://www.promisejs.org/api/)
 
 ### database.dropUser(username)
 
-Returns [`Promise`](https://www.promisejs.org/api/)
+Returns [`Promise<void>`](https://www.promisejs.org/api/)
 
 ### database.eval(fn, ...args)
 
-Returns [`Promise`](https://www.promisejs.org/api/)
+Returns [`Promise<any>`](https://www.promisejs.org/api/)
 
 ### database.getLastErrorObj()
 

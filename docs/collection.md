@@ -12,7 +12,7 @@ Returns [`Promise<Object>`](https://www.promisejs.org/api/)
 
 ### collection.findAndModify(opts)
 
-Returns [`Promise`](https://www.promisejs.org/api/)
+Returns [`Promise<any>`](https://www.promisejs.org/api/)
 
 ### collection.count(query = {})
 
@@ -40,15 +40,15 @@ Returns [`Promise<Object>`](https://www.promisejs.org/api/)
 
 ### collection.rename(name, opts = {})
 
-Returns [`Promise`](https://www.promisejs.org/api/)
+Returns [`Promise<void>`](https://www.promisejs.org/api/)
 
 ### collection.drop()
 
-Returns [`Promise`](https://www.promisejs.org/api/)
+Returns [`Promise<void>`](https://www.promisejs.org/api/)
 
 ### collection.stats()
 
-Returns [`Promise`](https://www.promisejs.org/api/)
+Returns [`Promise<any>`](https://www.promisejs.org/api/)
 
 ### collection.mapReduce(map, reduce, opts = {})
 
@@ -64,19 +64,19 @@ Returns `string`
 
 ### collection.dropIndexes()
 
-Returns [`Promise`](https://www.promisejs.org/api/)
+Returns [`Promise<void>`](https://www.promisejs.org/api/)
 
 ### collection.dropIndex(index)
 
-Returns [`Promise`](https://www.promisejs.org/api/)
+Returns [`Promise<void>`](https://www.promisejs.org/api/)
 
 ### collection.createIndex(index, opts = {})
 
-Returns [`Promise`](https://www.promisejs.org/api/)
+Returns [`Promise<void>`](https://www.promisejs.org/api/)
 
 ### collection.ensureIndex(index, opts = {})
 
-Returns [`Promise`](https://www.promisejs.org/api/)
+Returns [`Promise<void>`](https://www.promisejs.org/api/)
 
 ### collection.getIndexes()
 
@@ -84,7 +84,7 @@ Returns [`Promise<Array>`](https://www.promisejs.org/api/)
 
 ### collection.reIndex()
 
-Returns [`Promise`](https://www.promisejs.org/api/)
+Returns [`Promise<void>`](https://www.promisejs.org/api/)
 
 ### collection.isCapped()
 

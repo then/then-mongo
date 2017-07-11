@@ -4,7 +4,7 @@
 
 ### bulk.find(query)
 
-Returns `{upsert(), remove(), removeOne(), update(updateObj), updateOne(updateObj), replaceOne(updObj)}`
+Returns `{upsert(): any, remove(): any, removeOne(): any, update(updateObj: any): any, updateOne(updateObj: any): any, replaceOne(updObj: any): any}`
 
 ### bulk.insert(doc)
 
@@ -20,5 +20,5 @@ Returns `Object`
 
 ### bulk.execute()
 
-Returns [`Promise`](https://www.promisejs.org/api/)
+Returns [`Promise<any>`](https://www.promisejs.org/api/)
 

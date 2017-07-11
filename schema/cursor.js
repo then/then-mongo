@@ -58,7 +58,7 @@ module.exports = {
   'sort'
 ].forEach(function (key) {
   module.exports.methods[key] = {
-    args: [{name: 'obj'}],
+    args: [{name: 'obj', type: 'Object'}],
     returns: 'this'
   };
 });

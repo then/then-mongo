@@ -61,6 +61,10 @@ fs.readdirSync(__dirname + '/schema').forEach(function (type) {
       } else {
         lines.push('Returns `' + method.returns + '`');
       }
+      if (method.desc) {
+        lines.push('');
+        lines.push(method.desc);
+      }
       lines.push('');
     });
     lines.push('');
