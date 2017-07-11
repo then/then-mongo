@@ -24,3 +24,17 @@ module.exports = function (connString, cols, options) {
   })
   return db;
 };
+
+// expose bson stuff visible in the shell
+module.exports.Binary     = mongojs.Binary      ;
+module.exports.Code       = mongojs.Code        ;
+module.exports.DBRef      = mongojs.DBRef       ;
+module.exports.Double     = mongojs.Double      ;
+module.exports.Long       = mongojs.Long        ;
+module.exports.NumberLong = mongojs.NumberLong  ;
+module.exports.MinKey     = mongojs.MinKey      ;
+module.exports.MaxKey     = mongojs.MaxKey      ;
+module.exports.ObjectID   = mongojs.ObjectID    ;
+module.exports.ObjectId   = mongojs.ObjectId    ;
+module.exports.Symbol     = mongojs.Symbol      ;
+module.exports.Timestamp  = mongojs.Timestamp   ;
