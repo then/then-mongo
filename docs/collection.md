@@ -80,7 +80,7 @@ Returns [`Promise<void>`](https://www.promisejs.org/api/)
 
 ### collection.getIndexes()
 
-Returns [`Promise<Array>`](https://www.promisejs.org/api/)
+Returns [`Promise<Array<Object>>`](https://www.promisejs.org/api/)
 
 ### collection.reIndex()
 

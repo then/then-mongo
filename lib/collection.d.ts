@@ -26,7 +26,7 @@ export default class Collection {
   dropIndex(index: any): Promise<void>
   createIndex(index: any, opts?: any): Promise<void>
   ensureIndex(index: any, opts?: any): Promise<void>
-  getIndexes(): Promise<Array>
+  getIndexes(): Promise<Array<Object>>
   reIndex(): Promise<void>
   isCapped(): Promise<boolean>
   group(doc: any): Promise<Array<Object>>

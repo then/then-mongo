@@ -79,7 +79,7 @@ module.exports = {
     },
     getIndexes: {
       args: [],
-      returns: 'Promise<Array>'
+      returns: 'Promise<Array<Object>>'
     },
     reIndex: {
       args: [],
