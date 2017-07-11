@@ -1,6 +1,6 @@
 {
   "name": "then-mongo",
-  "version": "2.3.2",
+  "version": "3.0.0",
   "description": "Promise based mongo driver built on mongojs",
   "keywords": [
     "mongo",
