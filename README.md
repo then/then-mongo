@@ -26,7 +26,7 @@ db.collectionA.find().skip(5).limit(10)
 
 ## API
 
-Exports a function `connect(connectionString, collections?, options?)` and returns an instance of [Database](docs/database.md).  If you pass in a list of collection names, then you can access each [Collection](docs/collection.md) as a proeprty of the [Database](docs/database.md) instance.
+Exports a function `connect(connectionString, collections?, options?)` and returns an instance of [Database](docs/database.md).  If you pass in a list of collection names, then you can access each [Collection](docs/collection.md) as a property of the [Database](docs/database.md) instance.
 
 ## License
 
