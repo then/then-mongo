@@ -13,7 +13,7 @@ export {Bulk, Collection, Cursor, Database};
 /**
  * Connect to a database
  */
-function connect(connString: string, collectionNames?: Array<string>, options?: Object): Database;
+declare function connect(connString: string, collectionNames?: Array<string>, options?: Object): Database;
 export default connect;
 
 export {Binary, Code, Double, Long, MinKey, MaxKey, ObjectID, Timestamp};
