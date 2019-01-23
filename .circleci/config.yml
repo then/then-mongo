@@ -1,0 +1,85 @@
+version: 2
+
+refs:
+  - &container
+    docker:
+      - image: circleci/node:10
+      - image: mongo:3.6.10-stretch
+        name: mongo-three
+        environment:
+          MONGO_INITDB_DATABASE: database
+      - image: mongo:4.1.7-xenial
+        name: mongo-four
+        environment:
+          MONGO_INITDB_DATABASE: database
+    working_directory: ~/repo
+  - &docker_setup
+    setup_remote_docker:
+      docker_layer_caching: true
+  - &restore_cache
+    restore_cache:
+      keys:
+        - v1-dependencies-{{ checksum "yarn.lock" }}
+        - v1-dependencies-
+  - &save_cache
+    save_cache:
+      paths:
+        - node_modules
+      key: v1-dependencies-{{ checksum "yarn.lock" }}
+  - &yarn_install
+    run:
+      name: Yarn Install
+      command: yarn --frozen-lockfile
+  - &test
+    run:
+      name: Test
+      command: MONGO_3=mongodb://mongo-three:27017/database MONGO_4=mongodb://mongo-four:27017/database yarn test
+
+jobs:
+  all:
+    <<: *container
+    steps:
+      - checkout
+      - *restore_cache
+      - *yarn_install
+      - *save_cache
+      # - *docker_setup
+      - *test
+
+  master:
+    <<: *container
+    steps:
+      - checkout
+      - *restore_cache
+      - *yarn_install
+      - *save_cache
+      - *docker_setup
+      - *test
+
+workflows:
+  version: 2
+  all:
+    jobs:
+      - all:
+          filters:
+            branches:
+              ignore:
+                - master
+  master:
+    jobs:
+      - master:
+          filters:
+            branches:
+              only: master
+  nightly:
+    triggers:
+      - schedule:
+          cron: '0 1 * * *'
+          filters:
+            branches:
+              only: master
+    jobs:
+      - all:
+          filters:
+            branches:
+              only: master

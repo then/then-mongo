@@ -98,11 +98,11 @@ Returns [`Promise<Array<Object>>`](https://www.promisejs.org/api/)
 
 Returns [`Cursor`](cursor.md)
 
-### collection.initializeOrderedBulkOp()
+### collection.initializeOrderedBulkOp(opts = {})
 
 Returns [`Bulk`](bulk.md)
 
-### collection.initializeUnorderedBulkOp()
+### collection.initializeUnorderedBulkOp(opts = {})
 
 Returns [`Bulk`](bulk.md)
 

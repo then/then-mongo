@@ -8,12 +8,14 @@
     "promise"
   ],
   "dependencies": {
+    "@databases/with-container": "^0.0.1",
     "@types/mongodb": "^2.2.7",
     "@types/promise": "^7.1.30",
-    "mongojs": "2.4.0",
+    "mongojs": "^2.6.0",
     "promise": "^8.0.0"
   },
   "devDependencies": {
+    "@babel/code-frame": "^7.0.0",
     "babylon": "^6.3.18",
     "chalk": "^2.0.1",
     "istanbul": "^0.4.1",

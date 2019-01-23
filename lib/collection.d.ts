@@ -31,6 +31,6 @@ export default class Collection {
   isCapped(): Promise<boolean>
   group(doc: any): Promise<Array<Object>>
   aggregate(pipeline: any): Cursor
-  initializeOrderedBulkOp(): Bulk
-  initializeUnorderedBulkOp(): Bulk
+  initializeOrderedBulkOp(opts?: any): Bulk
+  initializeUnorderedBulkOp(opts?: any): Bulk
 }
