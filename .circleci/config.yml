@@ -13,9 +13,6 @@ refs:
         environment:
           MONGO_INITDB_DATABASE: database
     working_directory: ~/repo
-  - &docker_setup
-    setup_remote_docker:
-      docker_layer_caching: true
   - &restore_cache
     restore_cache:
       keys:
@@ -43,7 +40,6 @@ jobs:
       - *restore_cache
       - *yarn_install
       - *save_cache
-      # - *docker_setup
       - *test
 
   master:
@@ -53,8 +49,16 @@ jobs:
       - *restore_cache
       - *yarn_install
       - *save_cache
-      - *docker_setup
       - *test
+      - run:
+          name: NPM Auth
+          command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+      - run:
+          name: Release
+          command: |
+            npx semantic-release && \
+            npx cross-ci :run \
+                npx commit-status success Version "'\${PROJECT_VERSION}'"
 
 workflows:
   version: 2
